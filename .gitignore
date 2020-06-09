@@ -85,3 +85,10 @@ lint/tmp/
 # lint/reports/
 /gradlew
 /gradlew.bat
+/gradle/wrapper/
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/.name
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/runConfigurations.xml
