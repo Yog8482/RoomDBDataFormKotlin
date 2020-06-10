@@ -1,4 +1,4 @@
-package com.standalone.dataformkotlin.ui.main
+package com.standalone.dataformkotlin.viewmodels
 
 import androidx.lifecycle.ViewModel
 

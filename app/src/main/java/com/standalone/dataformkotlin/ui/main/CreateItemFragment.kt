@@ -1,6 +1,5 @@
 package com.standalone.dataformkotlin.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.standalone.dataformkotlin.R
+import com.standalone.dataformkotlin.viewmodels.CreateItemViewModel
 
 class CreateItemFragment : Fragment() {
 

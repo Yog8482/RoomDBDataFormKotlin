@@ -1,18 +1,15 @@
 package com.standalone.dataformkotlin.ui.main
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.standalone.dataformkotlin.R
+import com.standalone.dataformkotlin.viewmodels.ItemListViewModel
 
 class ItemListFragment : Fragment() {
 
@@ -20,7 +17,7 @@ class ItemListFragment : Fragment() {
         fun newInstance() = ItemListFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: ItemListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +34,7 @@ class ItemListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ItemListViewModel::class.java)
         // TODO: Use the ViewModel
 
 
