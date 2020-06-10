@@ -5,19 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.standalone.dataformkotlin.R
+import com.standalone.dataformkotlin.utilities.InjectorUtils
+import com.standalone.dataformkotlin.viewmodels.CreateItemViewModel
 import com.standalone.dataformkotlin.viewmodels.ItemListViewModel
 
 class ItemListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ItemListFragment()
+    private val viewModel: ItemListViewModel by viewModels {
+        InjectorUtils.provideItemListViewModelFactory(this)
     }
-
-    private lateinit var viewModel: ItemListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,15 +32,5 @@ class ItemListFragment : Fragment() {
 
         return view
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ItemListViewModel::class.java)
-        // TODO: Use the ViewModel
-
-
-    }
-
-
 
 }

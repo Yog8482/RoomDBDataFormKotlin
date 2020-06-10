@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.standalone.dataformkotlin.R
+import com.standalone.dataformkotlin.utilities.InjectorUtils
 import com.standalone.dataformkotlin.viewmodels.CreateItemViewModel
 
 class CreateItemFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CreateItemFragment()
+    private val viewModel: CreateItemViewModel by viewModels {
+        InjectorUtils.provideCreateItemViewModelFactory(this)
     }
-
-    private lateinit var viewModel: CreateItemViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +33,5 @@ class CreateItemFragment : Fragment() {
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreateItemViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
