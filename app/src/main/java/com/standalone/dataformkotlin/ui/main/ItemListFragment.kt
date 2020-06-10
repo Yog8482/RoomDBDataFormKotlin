@@ -6,26 +6,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.standalone.dataformkotlin.R
 
-class ItemListFragment : Fragment(), View.OnClickListener {
+class ItemListFragment : Fragment() {
 
     companion object {
         fun newInstance() = ItemListFragment()
     }
 
     private lateinit var viewModel: MainViewModel
-    var navController: NavController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.item_list_fragment, container, false)
+
+        val view =inflater.inflate(R.layout.item_list_fragment, container, false)
+        view.findViewById<FloatingActionButton>(R.id.fab_create_item).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_itemListFragment_to_createItemFragment)
+        }
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -33,15 +40,9 @@ class ItemListFragment : Fragment(), View.OnClickListener {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
-        val host: NavHostFragment = view
-                as NavHostFragment? ?: return
-
-        navController = host.navController
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
+
 
 }

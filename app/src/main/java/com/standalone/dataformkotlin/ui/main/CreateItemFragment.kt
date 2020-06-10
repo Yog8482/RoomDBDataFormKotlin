@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.standalone.dataformkotlin.R
 
 class CreateItemFragment : Fragment() {
@@ -20,12 +24,19 @@ class CreateItemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.create_item_fragment, container, false)
+
+        val view = inflater.inflate(R.layout.create_item_fragment, container, false)
+        view.findViewById<Button>(R.id.btn_create_item).setOnClickListener {
+            Navigation.findNavController(view)
+                .navigate(R.id.action_createItemFragment_to_itemListFragment)
+        }
+        return view
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CreateItemViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CreateItemViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

@@ -15,8 +15,8 @@
             app:destination="@id/createItemFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/createItemFragment"
@@ -25,6 +25,7 @@
         tools:layout="@layout/create_item_fragment">
         <action
             android:id="@+id/action_createItemFragment_to_itemListFragment"
-            app:popUpTo="@id/itemListFragment" />
+            app:popUpTo="@id/itemListFragment"
+            />
     </fragment>
 </navigation>
