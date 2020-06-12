@@ -15,42 +15,49 @@
             type="com.standalone.dataformkotlin.ui.main.CreateItemFragment.AddItemCallback" />
     </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.main.CreateItemFragment">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.CreateItemFragment">
 
-            <ScrollView
-                android:id="@+id/scrollView2"
-                android:layout_width="0dp"
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:orientation="vertical"
+                android:padding="@dimen/margin_padding_normal">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/margin_padding_normal">
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:cardUseCompatPadding="true">
 
-                    <androidx.cardview.widget.CardView
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="@dimen/card_corner_radius"
-                        app:cardElevation="@dimen/card_elevation"
-                        app:cardUseCompatPadding="true">
+                        android:orientation="vertical"
+                        android:padding="@dimen/margin_padding_small">
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/ll_container"
+
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/margin_padding_small">
+                            android:layout_marginTop="@dimen/margin_padding_small"
+                            android:hint="@string/item_name">
 
                             <EditText
                                 android:id="@+id/txtItemName"
@@ -58,9 +65,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_padding_small"
                                 android:ems="10"
-                                android:hint="@string/item_name"
                                 android:inputType="textPersonName"
                                 app:error="@{viewModel.newFormState.nameError}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_small"
+                            android:hint="@string/rate">
 
                             <EditText
                                 android:id="@+id/txtRate"
@@ -68,8 +82,15 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_padding_small"
                                 android:ems="10"
-                                android:hint="@string/rate"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                android:maxLength="19" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_small"
+                            android:hint="@string/quantity">
 
                             <EditText
                                 android:id="@+id/txtQty"
@@ -77,42 +98,45 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_padding_small"
                                 android:ems="10"
-                                android:hint="@string/quantity"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                android:maxLength="19" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_padding_small"
+                            android:hint="@string/amount">
 
                             <EditText
                                 android:id="@+id/txtAmount"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
                                 android:ems="10"
                                 android:enabled="false"
-                                android:hint="@string/amount"
                                 android:inputType="number"
-                                android:text="@{`\u20B9 `+ viewModel.itemAmount,default=0}" />
+                                android:text="@{`\u20B9 `+ viewModel.itemAmount}"
+                                app:error="@{viewModel.newFormState.amountError}" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_create_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_padding_normal"
+                    android:backgroundTint="@color/material_button_state"
+                    android:enabled="@{viewModel.newFormState.dataValid}"
+                    android:onClick="@{() -> callback.add(viewModel.itemToAdd)}"
+                    android:text="@string/add"
+                    android:textColor="@android:color/white" />
 
 
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
+        </ScrollView>
 
-                    </androidx.cardview.widget.CardView>
-
-                    <Button
-                        android:id="@+id/btn_create_item"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_padding_normal"
-                        android:background="@color/colorPrimary"
-                        android:enabled="@{viewModel.newFormState.dataValid}"
-                        android:onClick="@{() -> callback.add(viewModel.itemToAdd)}"
-                        android:text="@string/add"
-
-                        android:textColor="@android:color/white" />
-
-
-                </LinearLayout>
-            </ScrollView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -32,16 +32,21 @@ class CreateItemViewModel internal constructor(
         get() = _itemAmount
 
     init {
-        _itemAmount.value="0"
+        _itemAmount.value = "0"
     }
 
     val itemToAdd: LiveData<FormFields>
         get() = _itemToAdd
 
 
+    @Suppress("UNCHECKED_CAST")
     fun addData(fields: FormFields) {
-        val items= fields.name?.let { Item(name = it,rate = fields.rate.toString(),
-            qty = fields.qty.toString(),amount = fields.amount.toString()) }
+        val items = fields.name?.let {
+            Item(
+                name = it, rate = fields.rate.toString(),
+                qty = fields.qty.toString(), amount = fields.amount.toString()
+            )
+        }
 
         viewModelScope.launch {
             itemRepository.insertItems(listOf(items) as List<Item>)
@@ -52,19 +57,21 @@ class CreateItemViewModel internal constructor(
 
     fun formDataChanged(name: String?, qty: Long?, rate: Long?) {
 
-        _itemToAdd.value= FormFields(name,rate,qty)
+        _itemToAdd.value = FormFields(name, rate, qty)
+        calculateAmount(qty ?: 0, rate ?: 0)
 
         if (!isNameValid(name)) {
-            _newFormState.value = FormState(R.string.invalid_name)
+            _newFormState.value = FormState(R.string.invalid_name, null)
+        } else if (java.lang.Long.parseLong(_itemAmount.value!!) < 0) {
+            _newFormState.value = FormState(null, R.string.invalid_amount)
         } else {
             _newFormState.value = FormState(true)//Valid form, Enable add button
         }
-        calculateAmount(qty?:0, rate?:0)
 
     }
 
     private fun calculateAmount(qty: Long = 0, rate: Long = 0) {
-        _itemAmount.value = "${ rate*qty}"
+        _itemAmount.value = "${rate * qty}"
 
     }
 
@@ -76,5 +83,6 @@ class CreateItemViewModel internal constructor(
         return !(name.trim().isEmpty())
 
     }
+
 
 }

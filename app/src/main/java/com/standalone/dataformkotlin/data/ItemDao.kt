@@ -11,7 +11,7 @@ import androidx.room.*
 @Dao
 interface ItemDao {
 
-    @Query("SELECT * from items")
+    @Query("SELECT * from items ORDER BY rowid desc")
     fun getItems(): LiveData<List<Item>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

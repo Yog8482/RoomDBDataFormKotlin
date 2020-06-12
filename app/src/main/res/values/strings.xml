@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Data Form Kotlin</string>
-    <string name="no_items">No Items.</string>
+    <string name="no_items">Empty List.</string>
     <string name="fill_details">Fill Details</string>
     <string name="item_name">Item Name</string>
     <string name="quantity">Quantity</string>
@@ -14,6 +14,7 @@
     <!--    Form Validation messages-->
 
     <string name="invalid_name">Enter valid name for item.</string>
+    <string name="invalid_amount">Amount is less than ZERO.Please, Adjust Rate or Qty.</string>
     <string name="add_item_success">Great! New item added.</string>
     <string name="add_item_fail">Oops! Unable to add new item.</string>
 </resources>

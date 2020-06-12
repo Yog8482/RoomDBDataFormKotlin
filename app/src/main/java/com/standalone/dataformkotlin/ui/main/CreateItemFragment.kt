@@ -1,11 +1,13 @@
 package com.standalone.dataformkotlin.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,7 +20,6 @@ import com.standalone.dataformkotlin.data.FormFields
 import com.standalone.dataformkotlin.databinding.CreateItemFragmentBinding
 import com.standalone.dataformkotlin.utilities.InjectorUtils
 import com.standalone.dataformkotlin.viewmodels.CreateItemViewModel
-import java.lang.NumberFormatException
 
 class CreateItemFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class CreateItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        (requireActivity() as MainActivity).title = "Fill Details"
+//        (requireActivity() as MainActivity).title = "Fill Details"
 
         binding = CreateItemFragmentBinding.inflate(inflater, container, false)
         context ?: return binding.root
@@ -48,6 +49,7 @@ class CreateItemFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             callback = object : AddItemCallback {
                 override fun add(formFields: FormFields) {
+                    closeKeyboard()
                     binding.btnCreateItem.isEnabled = false
                     createItemViewModel.addData(formFields)
 
@@ -56,9 +58,7 @@ class CreateItemFragment : Fragment() {
             }
         }
 
-//        toolbar.setNavigationOnClickListener { view ->
-//            view.findNavController().navigateUp()
-//        }
+
 
         createItemViewModel.result.observe(viewLifecycleOwner) { result ->
 
@@ -131,7 +131,14 @@ class CreateItemFragment : Fragment() {
             .navigateUp()
     }
 
-
+    private fun closeKeyboard() {
+        val inputManager: InputMethodManager =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(
+            requireActivity().currentFocus!!.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
+    }
     interface AddItemCallback {
         fun add(formFields: FormFields)
     }

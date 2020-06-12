@@ -2,7 +2,7 @@ package com.standalone.dataformkotlin.data
 
 import androidx.room.Entity
 
-@Entity(tableName = "items",primaryKeys = ["name"])
+@Entity(tableName = "items", primaryKeys = ["name"])
 data class Item(
     val name: String,
     val rate: String,
