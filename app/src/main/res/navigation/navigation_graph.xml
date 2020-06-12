@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/itemListFragment"
         android:name="com.standalone.dataformkotlin.ui.main.ItemListFragment"
-        android:label="item_list_fragment"
         tools:layout="@layout/item_list_fragment">
         <action
             android:id="@+id/action_itemListFragment_to_createItemFragment"
@@ -16,16 +15,13 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out" />
+            app:popExitAnim="@anim/fade_out"
+            />
     </fragment>
     <fragment
         android:id="@+id/createItemFragment"
         android:name="com.standalone.dataformkotlin.ui.main.CreateItemFragment"
-        android:label="create_item_fragment"
         tools:layout="@layout/create_item_fragment">
-        <action
-            android:id="@+id/action_createItemFragment_to_itemListFragment"
-            app:popUpTo="@id/itemListFragment"
-            />
+
     </fragment>
 </navigation>

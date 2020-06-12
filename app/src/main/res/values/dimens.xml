@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_padding_normal">16dp</dimen>
+    <dimen name="margin_padding_small">8dp</dimen>
+    <dimen name="margin_padding_extra_small">4dp</dimen>
+
+<!--    card dimensions-->
+    <dimen name="card_side_margin">12dp</dimen>
+    <dimen name="card_bottom_margin">26dp</dimen>
+    <dimen name="card_elevation">6dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_bottom_padding">8dp</dimen>
+
+    <!--    FAB-->
+    <dimen name="fab_bottom_margin">16dp</dimen>
+    <dimen name="fab_right_margin">16dp</dimen>
+</resources>

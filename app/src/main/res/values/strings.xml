@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StandaloneDataFormKotlin</string>
+    <string name="app_name">Data Form Kotlin</string>
     <string name="no_items">No Items.</string>
     <string name="fill_details">Fill Details</string>
     <string name="item_name">Item Name</string>
@@ -8,4 +8,12 @@
     <string name="Rs">\u20B9</string>
     <string name="amount">Amount ( \u20B9 )</string>
     <string name="add">Add</string>
+    <string name="delete_item_desc">delete item</string>
+    <string name="item_removed_msg">Item deleted</string>
+
+    <!--    Form Validation messages-->
+
+    <string name="invalid_name">Enter valid name for item.</string>
+    <string name="add_item_success">Great! New item added.</string>
+    <string name="add_item_fail">Oops! Unable to add new item.</string>
 </resources>

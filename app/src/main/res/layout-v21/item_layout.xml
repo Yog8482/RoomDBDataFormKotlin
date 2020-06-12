@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -27,13 +28,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/margin_padding_small">
+            android:paddingBottom="8dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_padding_small"
+                android:layout_marginEnd="8dp"
                 android:background="@android:drawable/ic_menu_delete"
                 android:contentDescription="@string/delete_item_desc"
                 android:onClick="@{clickListener}"
@@ -42,8 +43,7 @@
                 app:layout_constraintHorizontal_bias="0.97"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card_amount"
-                app:layout_constraintVertical_bias="1.0"
-                android:layout_marginRight="@dimen/margin_padding_small" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/card_name"
@@ -51,16 +51,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_padding_small"
                 android:layout_marginTop="@dimen/margin_padding_normal"
-                android:layout_marginEnd="@dimen/margin_padding_small"
+                android:layout_marginEnd="8dp"
                 android:hint="@string/item_name"
                 android:text="@{item.name}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintEnd_toStartOf="@+id/card_amount"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="@dimen/margin_padding_small"
-                android:layout_marginRight="@dimen/margin_padding_small" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/card_rate"
@@ -91,8 +89,8 @@
                 android:id="@+id/card_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/margin_padding_small"
-                android:layout_marginRight="@dimen/margin_padding_small"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:hint="@string/amount"
                 android:text="@{`\u20B9 `+ item.amount}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
