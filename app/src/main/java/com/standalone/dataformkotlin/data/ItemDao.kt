@@ -12,7 +12,7 @@ import androidx.room.*
 interface ItemDao {
 
     @Query("SELECT * from items")
-    fun getItems(): LiveData<Item>
+    fun getItems(): LiveData<List<Item>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(items: List<Item>)

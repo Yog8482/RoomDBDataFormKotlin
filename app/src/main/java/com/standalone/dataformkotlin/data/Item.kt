@@ -1,13 +1,9 @@
 package com.standalone.dataformkotlin.data
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "items")
+@Entity(tableName = "items",primaryKeys = ["name"])
 data class Item(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
     val name: String,
     val rate: String,
     val qty: String,

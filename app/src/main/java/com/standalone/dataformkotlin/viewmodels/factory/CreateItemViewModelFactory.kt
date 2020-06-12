@@ -21,8 +21,7 @@ class CreateItemViewModelFactory(
         handle: SavedStateHandle
     ): T {
         return CreateItemViewModel(
-            repository,
-            handle
+            repository
         ) as T
     }
 }

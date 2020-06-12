@@ -21,8 +21,6 @@ class ItemListViewModelFactory(
         handle: SavedStateHandle
     ): T {
         return ItemListViewModel(
-            repository,
-            handle
-        ) as T
+            repository) as T
     }
 }
