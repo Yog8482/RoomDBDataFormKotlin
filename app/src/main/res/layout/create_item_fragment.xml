@@ -57,7 +57,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_padding_small"
-                            android:hint="@string/item_name">
+                            android:hint="@string/item_name"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                            >
 
                             <EditText
                                 android:id="@+id/txtItemName"
@@ -74,7 +77,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_padding_small"
-                            android:hint="@string/rate">
+                            android:hint="@string/rate"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
 
                             <EditText
                                 android:id="@+id/txtRate"
@@ -90,7 +95,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_padding_small"
-                            android:hint="@string/quantity">
+                            android:hint="@string/quantity"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            >
 
                             <EditText
                                 android:id="@+id/txtQty"
@@ -106,7 +113,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_padding_small"
-                            android:hint="@string/amount">
+                            android:hint="@string/amount"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                            >
 
                             <EditText
                                 android:id="@+id/txtAmount"
